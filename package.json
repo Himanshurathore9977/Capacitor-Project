@@ -10,6 +10,7 @@
     "@capacitor/keyboard": "7.0.0",
     "@capacitor/status-bar": "7.0.0",
     "cra-template": "1.2.0",
+    "first-plugin": "file:../Capacitor-Plugin/first-plugin",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",
