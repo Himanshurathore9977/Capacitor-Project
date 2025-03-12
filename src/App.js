@@ -1,37 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import { Authentication } from 'truvideo-capacitor-coremodule-sdk';
+
 import { useEffect, useState } from 'react';
-import { Example } from 'first-plugin';
+import { Authentication } from 'first-plugin';
 function App() {
   const [value, setValue] = useState();
   const [value2, setValue2] = useState();
   const [isAuthenticationExpire, setIsAuthenticationExpire] = useState(true);
   useEffect(() => {
-    // auth();
-    // isAuthenticated();
-    //testPlugin();
-    // isAuthenticationExpired();
-    //console.log("Inside Use Effect")
-    //setValue("value ");
+    testPlugin();
   })
   async function testPlugin() {
     let response;
     try {
-      response = await Example.echo({ value: "Hello from plugin!" });
+      response = await Authentication.echo({ value: "Hello from New Capacitor Plugin !" });
       setValue(response.value);
       console.log("Plugin Response:", response);
     } catch (error) {
       setValue(error);
       console.error("Error using plugin:", error);
     }
-
     return response.value
   }
+
+  async function testPluginTrueVideo() {
+    try {
+      const result = await Authentication.echo({ value: "Hello from TruVideo Plugin!" });
+      console.log("✅ Plugin Response:", result);
+    } catch (error) {
+      console.error("❌ Plugin Error:", error);
+    }
+  }
+  // testPluginTrueVideo(); 
+
 
   async function isAuthenticated() {
     let response;
     try {
-      response = await Example.isAuthenticated();
+      response = await Authentication.isAuthenticated();
       setValue2(response.isAuthenticated);
       console.log("isAuthenticated Response:", response);
     } catch (error) {
@@ -44,7 +50,7 @@ function App() {
   async function isAuthenticationExpired() {
     let response;
     try {
-      response = await Example.isAuthenticationExpired();
+      response = await Authentication.isAuthenticationExpired();
       setIsAuthenticationExpire(response.isAuthenticationExpired);
       console.log("isAuthenticationExpired Response:", response);
     } catch (error) {
@@ -53,53 +59,38 @@ function App() {
     }
     return response.isAuthenticationExpired
   }
-  // const toSha256String = (signature = string, payload = string) => {
-  //   try {
-  //     // Create HMAC using 'sha256' and the provided signature as the key
-  //     const hmac = QuickCrypto.createHmac('sha256', signature);
-  //     // Update the HMAC with the payload
-  //     hmac.update(payload);
-  //     // Generate the HMAC digest and convert it to a hex string
-  //     const hash = hmac.digest('hex');
-  //     return hash;
-  //   } catch (error) {
-  //     console.error('Error generating SHA256 string:', error);
-  //     return '';
-  //   }
-  // }
-
 
   async function auth() {
     try {
-      const isAuth = await Example.isAuthenticated();
+      const isAuth = await Authentication.isAuthenticated();
       console.log('isAuth', isAuth.authenticate);
       // Check if authentication token has expired
-      const isAuthExpired = await Example.isAuthenticationExpired();
+      const isAuthExpired = await Authentication.isAuthenticationExpired();
       console.log('isAuthExpired', isAuthExpired.isAuthenticationExpired);
       //generate payload for authentication
-      const payload = await Example.generatePayload();
+      const payload = await Authentication.generatePayload();
       const pay = String(payload.generatePayload);
       const apiKey = "EPhPPsbv7e";
       const secretKey = "9lHCnkfeLl";
-      
-      const signature = await Example.toSha256String({
-          secretKey: secretKey,
-          payload: pay
+
+      const signature = await Authentication.toSha256String({
+        secretKey: secretKey,
+        payload: pay
       });
-      setValue2(signature.signature);  
+      setValue2(signature.signature);
       const externalId = "";
       // Authenticate user
       if (!isAuth.isAuthenticated || isAuthExpired.isAuthenticationExpired) {
-        await Example.authenticate({
+        await Authentication.authenticate({
           apiKey: apiKey,
-          payload: pay, 
-          signature: signature.signature, 
+          payload: pay,
+          signature: signature.signature,
           externalId: externalId
         });
       }
       // If user is authenticated successfully
-      const initAuth = await Example.initAuthentication();
-      setValue2("Auth success");  
+      const initAuth = await Authentication.initAuthentication();
+      setValue2("Auth success");
       console.log('initAuth', initAuth.initAuthentication);
     } catch (error) {
       setValue2("Auth fail");
@@ -107,6 +98,7 @@ function App() {
     }
 
   }
+
   return (
     <div className="App">
       <h1> Hello Devs </h1>
@@ -115,20 +107,6 @@ function App() {
       <h2> {isAuthenticationExpire}</h2>
 
       <button onClick={() => auth()}>Click to Auth </button>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
     </div>
   );
 }

@@ -16,3 +16,6 @@ project(':capacitor-status-bar').projectDir = new File('../node_modules/@capacit
 
 include ':first-plugin'
 project(':first-plugin').projectDir = new File('../../Capacitor-Plugin/first-plugin/android')
+
+include ':truvideo-capacitor-coremodule-sdk'
+project(':truvideo-capacitor-coremodule-sdk').projectDir = new File('../../truvideo-capacitor-coremodule-sdk/android')
