@@ -1,8 +1,10 @@
 import './App.css';
 import { Authentication } from 'truvideo-capacitor-coremodule-sdk';
+// import Authentication from  "truvideo-capacitor-coremodule-sdk/dist/esm";
+
 
 import { useEffect, useState } from 'react';
-import { Authentication } from 'first-plugin';
+// import { Authentication } from 'first-plugin';
 function App() {
   const [value, setValue] = useState();
   const [value2, setValue2] = useState();
