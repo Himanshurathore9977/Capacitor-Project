@@ -1,5 +1,5 @@
 import React from 'react'
-import {  Example} from 'first-plugin';
+// import {  Example} from 'first-plugin';
 
 function testFirstPlugin() {
     async function testPlugin() {

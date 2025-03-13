@@ -13,7 +13,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",
-    "truvideo-capacitor-coremodule-sdk": "file:../capacitorsdk/TruVideoCapacitorCoreSdk",
+    "truvideo-capacitor-coremodule-sdk": "git+https://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@github.com/Truvideo/TruVideoCapacitorCoreSdk.git",
     "web-vitals": "^4.2.4"
   },
   "scripts": {

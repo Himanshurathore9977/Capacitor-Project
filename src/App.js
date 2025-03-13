@@ -1,66 +1,64 @@
+import { useEffect, useState } from 'react';
 import './App.css';
 import { Authentication } from 'truvideo-capacitor-coremodule-sdk';
-// import Authentication from  "truvideo-capacitor-coremodule-sdk/dist/esm";
 
 
-import { useEffect, useState } from 'react';
-// import { Authentication } from 'first-plugin';
 function App() {
   const [value, setValue] = useState();
   const [value2, setValue2] = useState();
   const [isAuthenticationExpire, setIsAuthenticationExpire] = useState(true);
   useEffect(() => {
-    testPlugin();
+    // testPlugin();
   })
-  async function testPlugin() {
-    let response;
-    try {
-      response = await Authentication.echo({ value: "Hello from New Capacitor Plugin !" });
-      setValue(response.value);
-      console.log("Plugin Response:", response);
-    } catch (error) {
-      setValue(error);
-      console.error("Error using plugin:", error);
-    }
-    return response.value
-  }
+  // async function testPlugin() {
+  //   let response;
+  //   try {
+  //     response = await Authentication.echo({ value: "Hello from New Capacitor Plugin !" });
+  //     setValue(response.value);
+  //     console.log("Plugin Response:", response);
+  //   } catch (error) {
+  //     setValue(error);
+  //     console.error("Error using plugin:", error);
+  //   }
+  //   return response.value
+  // }
 
-  async function testPluginTrueVideo() {
-    try {
-      const result = await Authentication.echo({ value: "Hello from TruVideo Plugin!" });
-      console.log("✅ Plugin Response:", result);
-    } catch (error) {
-      console.error("❌ Plugin Error:", error);
-    }
-  }
+  // async function testPluginTrueVideo() {
+  //   try {
+  //     const result = await Authentication.echo({ value: "Hello from TruVideo Plugin!" });
+  //     console.log("✅ Plugin Response:", result);
+  //   } catch (error) {
+  //     console.error("❌ Plugin Error:", error);
+  //   }
+  // }
   // testPluginTrueVideo(); 
 
 
-  async function isAuthenticated() {
-    let response;
-    try {
-      response = await Authentication.isAuthenticated();
-      setValue2(response.isAuthenticated);
-      console.log("isAuthenticated Response:", response);
-    } catch (error) {
-      setValue(error);
-      console.error("Error in checking isAuthenticated :", error);
-    }
-    return response.isAuthenticated
-  }
+  // async function isAuthenticated() {
+  //   let response;
+  //   try {
+  //     response = await Authentication.isAuthenticated();
+  //     setValue2(response.isAuthenticated);
+  //     console.log("isAuthenticated Response:", response);
+  //   } catch (error) {
+  //     setValue(error);
+  //     console.error("Error in checking isAuthenticated :", error);
+  //   }
+  //   return response.isAuthenticated
+  // }
 
-  async function isAuthenticationExpired() {
-    let response;
-    try {
-      response = await Authentication.isAuthenticationExpired();
-      setIsAuthenticationExpire(response.isAuthenticationExpired);
-      console.log("isAuthenticationExpired Response:", response);
-    } catch (error) {
-      setValue(error);
-      console.error("Error in checking isAuthenticationExpired:", error);
-    }
-    return response.isAuthenticationExpired
-  }
+  // async function isAuthenticationExpired() {
+  //   let response;
+  //   try {
+  //     response = await Authentication.isAuthenticationExpired();
+  //     setIsAuthenticationExpire(response.isAuthenticationExpired);
+  //     console.log("isAuthenticationExpired Response:", response);
+  //   } catch (error) {
+  //     setValue(error);
+  //     console.error("Error in checking isAuthenticationExpired:", error);
+  //   }
+  //   return response.isAuthenticationExpired
+  // }
 
   async function auth() {
     try {
